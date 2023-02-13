@@ -1,0 +1,12 @@
+@import "../../../mixin.scss";
+
+.product{
+  padding: 5px;
+  margin-bottom: 10px;
+  border: solid black 0.5px;
+
+  .product-name{
+    color: $primaryColor;
+    margin-bottom:20px;
+   }
+}

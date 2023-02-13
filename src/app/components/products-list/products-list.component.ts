@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
+import { HttpSandboxService } from 'src/app/http/http-sandbox.service';
+import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -7,21 +9,28 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class ProductsListComponent {
 
-  products:Product[] = [
-    {
-      id:1,
-      'name':'Phone XL',
-      'description':'A large phone with one of the best screens'
-    },
-    {
-      id:2,
-      'name':'Phone Mini',
-      'description':'A greatphone with one of the best cameras'
-    },
-    {
-      id:3,
-      'name':'Phone Standard',
-      'description':'A simple phone'
+  products?:Product[];
+  isLoading:boolean = false;
+
+  constructor(private httpSandBoxService:HttpSandboxService){
+
+  }
+
+  ngOnInit(){
+    this.tryGetRequest();
+  }
+
+  tryGetRequest(){
+    console.log('Started to fetch');
+    this.isLoading = true;
+     this.httpSandBoxService.sampleGet().subscribe((httpResponse:HttpResponse<Record<string,any>>)=>{
+      this.isLoading= false;
+
+     if(httpResponse.body!=null){
+
+     }
+
+
+     },);
     }
-  ];
 }

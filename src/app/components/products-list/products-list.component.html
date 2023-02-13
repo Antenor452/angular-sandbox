@@ -1,6 +1,12 @@
 <div class="products-container">
   <h3>Products</h3>
-  <ng-container *ngFor="let product of products" class="products-container">
-    <app-product [product]="product"></app-product>
-  </ng-container>
+  <div *ngIf="isLoading">
+    <p class="loader"></p>
+  </div>
+  <!-- <div
+    *ngFor="let product of products; odd as o; even as e"
+    [ngStyle]="{ 'background-color': e ? 'red' : 'green' }"
+  >
+    <app-product *ngIf="product != null" [product]="product"></app-product>
+  </div> -->
 </div>
